@@ -10,12 +10,7 @@ import { Component, Input } from "@angular/core";
 
 
 export class PropertyCardComponent {
-@Input() property_name : any
-    Property: any = 
-            {
-            "id":1,
-            "Name":"Birla House",
-            "Type":"House",
-            "Price":12000}
+@Input() property : any
+
             
         }
