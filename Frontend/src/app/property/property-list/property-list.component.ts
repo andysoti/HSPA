@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from '../../services/housing.service';
 import { IProperty } from '../IProperty.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-property-list',
@@ -9,16 +10,24 @@ import { IProperty } from '../IProperty.interface';
   styleUrl: './property-list.component.css'
 })
 export class PropertyListComponent implements OnInit {
+SellRent = 1;
+
   properties: Array<IProperty> = [];
 
-constructor(private housingService: HousingService) {}
+constructor(private route: ActivatedRoute, private housingService: HousingService) {}
+
 ngOnInit(): void {
-  this.housingService.getAllProperties().subscribe(
+
+  if(this.route.snapshot.url.toString()){
+    this.SellRent = 2; // if this is 1 we are on base url, otherwise we have enetered the sell page
+  }
+  this.housingService.getAllProperties(this.SellRent).subscribe(
     data=>{
           this.properties=data;
-          console.log(data)},
-    error => {console.log(error);}
-    
+          console.log(data);
+          
+        },
+    error => {console.log('httperror:'); console.log(error);}
         );
   
   // this.http.get('data/properties.json').subscribe(

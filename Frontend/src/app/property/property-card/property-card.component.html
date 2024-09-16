@@ -1,7 +1,9 @@
 <div class ="card" >
     <!-- <div class="card-img-wrapper" (mouseenter)="onMouseEnter()" [@scaleAnimation]="fadeInStart" style="border-right: solid;"> -->
     <div class="card-img-wrapper">
-        <img class="card-img-top" src="/images/house_default.jpg" >
+        <!-- in video image ref has .png always -->
+        <img *ngIf="property.Image" class="card-img-top" src="/images/{{property.Image}}" >
+        <img *ngIf="!property.Image" class="card-img-top" src="/images/house_default.png" >        
         <ul class="list-inline text-center member-icons animate">
             <li class="list-inline-item">
                 <button class="btn btn-primary" routerLink="/property-detail/{{property.id}}"><i class="fa-solid fa-pen-to-square"></i></button>

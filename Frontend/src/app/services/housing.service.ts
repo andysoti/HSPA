@@ -11,12 +11,12 @@ export class HousingService { // shared instance of service
 
   constructor(private http:HttpClient) { }
 
-  getAllProperties(): Observable<IProperty[]>{
+  getAllProperties(SellRent: number): Observable<IProperty[]>{
     return this.http.get('data/properties.json').pipe(
       map(data=> {
         const propertiesArray: Array<IProperty> = [];
         for (const id in data) {
-          if (data.hasOwnProperty(id)){
+          if (data.hasOwnProperty(id) && (data as any)[id].SellRent === SellRent){
               propertiesArray.push((data as any)[id]);} // changed from data to (data as any)
         }
         return propertiesArray;
