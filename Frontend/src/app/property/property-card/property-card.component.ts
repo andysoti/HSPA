@@ -16,9 +16,6 @@ export class PropertyCardComponent {
 // @Input() property : IProperty;
 @Input()
 property!: IProperty;
-
-
-
     
             
         }
