@@ -21,7 +21,8 @@
 
                   <div class="form-group col-12 mt-2">
                     <p>BHK</p>
-                      <div class="btn-group" btnRadioGroup>
+                      <div class="btn-group" btnRadioGroup name="BHK"
+                      [(ngModel)]="propertyView.BHK">
                         <label
                         *ngFor="let bhk of [1,2,3,4]"
                         class="btn btn-outline-primary mr-2"
@@ -43,7 +44,7 @@
 
                             <div class="form-group col-12 mt-3">
                               <p>Furnishing Type</p>
-                                <div class="btn-group" btnRadioGroup>
+                                <div class="btn-group" btnRadioGroup name="FType" [(ngModel)]="propertyView.FType">
                                   <label
                                   *ngFor="let ftype of furnishTypes"
                                   class="btn btn-outline-primary mr-2"
@@ -66,7 +67,8 @@
 
                           <div class="form-group col-12 mt-2">
                             <label for="name">City</label>
-                            <input type="text" class="form-control" >
+                            <input type="text" class="form-control" 
+                            name="City" [(ngModel)]="propertyView.City">
                           </div>
                           <div class="form-group col-12">
                             <button  type="button" class="btn btn-primary btn-block me-3 mt-2" (click)="selectTab(1)">Next</button>
@@ -92,7 +94,8 @@
 
                     <div class="form-group col-12">
                       <label>Built Area (in Sqr Feet)</label>
-                      <input type="text" class="form-control">
+                      <input type="text" class="form-control"
+                      [(ngModel)]="propertyView.BuiltArea" name="BuiltArea">
                     </div>
 
                     <div class="form-group col-12">
