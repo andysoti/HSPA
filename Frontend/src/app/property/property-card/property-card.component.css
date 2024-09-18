@@ -1,3 +1,7 @@
+.card {
+  min-height: 410px;
+}
+
 .propImg{
     
     height: 250px;
