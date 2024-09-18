@@ -18,6 +18,8 @@ import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const appRoutes: Routes = [
   {path: 'add-property', component: AddPropertyComponent},
@@ -45,7 +47,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BsDropdownModule.forRoot(),
+    BrowserAnimationsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
     // HttpClientModule
   ],
   providers: [provideHttpClient(), 
