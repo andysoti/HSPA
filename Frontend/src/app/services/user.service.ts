@@ -6,18 +6,23 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-constructor() { }
+constructor() { } // TODO error at 18.7:50, line user..users
 
 
 addUser(user: User  ) {
   let users = [];
-  if (localStorage.getItem('Users')){
+  if (localStorage.getItem('Users')) {
     users = JSON.parse(localStorage.getItem('Users')!);
-    // TODO error at 18.7:50, line below
-    users = [user, ...users]; // appends to front
+
+    // added this because users was an object, not iterable
+    if (!Array.isArray(users)) {
+      console.error('Invalid data in local storage, resetting users array.');
+      users = [];
+    }
+
+    users = [user, ...users];
   } else {
     users = [user];
-    
   }
   localStorage.setItem('Users', JSON.stringify(users));
 }

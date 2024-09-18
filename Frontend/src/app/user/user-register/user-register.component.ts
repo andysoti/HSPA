@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { User } from '../../model/user';
+import { AlertifyService } from '../../services/alertify.service';
+
 
 @Component({
   selector: 'app-user-register',
@@ -15,7 +17,9 @@ export class UserRegisterComponent implements OnInit {
   user!: User;
   userSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder, private userService: UserService) { }
+  constructor(private fb: FormBuilder, 
+            private userService: UserService,
+          private alertify: AlertifyService) { }
 
   // ngOnInit() {
   //   this.registrationForm = new FormGroup(
@@ -86,11 +90,15 @@ get mobile() {
     if(this.registrationForm.valid){
       // this.user = Object.assign(this.user, this.registrationForm.value); // no longer needed since we created a model
       
-      // this.userService.addUser(this.userData()); TODO, this should be uncommented
+      this.userService.addUser(this.userData()); //TODO, this should be uncommented
       // ERROR video 18 save data locally in browser
      
       this.registrationForm.reset()
       this.userSubmitted = false;
+      this.alertify.success("Congrats, you are registered!")
+    } 
+    else{
+      this.alertify.error('Kindly fill necessary fields')
     }
   }
 
@@ -105,18 +113,6 @@ get mobile() {
     };
 }
 
-  // addUser(user: any) {
-  //   let users = [];
-  //   if (localStorage.getItem('Users')){
-  //     users = JSON.parse(localStorage.getItem('Users')!);
-  //     // users.push(user);
-  //     // TODO error at 18.7:50
-  //     users = [user, ...users]; // appends to front
-  //   } else {
-  //     users = [user];
-      
-  //   }
-  //   localStorage.setItem('Users', JSON.stringify(users));
-  // }
+
 
 }
