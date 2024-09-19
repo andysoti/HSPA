@@ -6,6 +6,7 @@ import { IProperty } from '../../model/iproperty';
 import { IPropertyBase } from '../../model/iPropertybase';
 import { Property } from '../../model/property';
 import { HousingService } from '../../services/housing.service';
+import { AlertifyService } from '../../services/alertify.service';
 
 @Component({
   selector: 'app-add-property',
@@ -35,7 +36,9 @@ export class AddPropertyComponent implements OnInit {
   };
 
 
-  constructor(private fb: FormBuilder, private router: Router, private housingService: HousingService ) { }
+  constructor(private fb: FormBuilder, private router: Router, 
+                private housingService: HousingService,
+               private alertify: AlertifyService) { }
   ngOnInit() {
     this.CreateAddPropertyForm();
   }
@@ -87,13 +90,19 @@ export class AddPropertyComponent implements OnInit {
     if(this.allTabsValid()){
       this.mapProperty();
       this.housingService.addProperty(this.property);
-      console.log('Form, submitted.');
+      this.alertify.success('Form, submitted.');
     // console.log('SellRent=' + this.addPropertyForm!.value.BasicInfo.SellRent)
        console.log(this.addPropertyForm);
+
+      if(this.SellRent.value === '2'){
+       this.router.navigate(['/rent-property'])
+      } else{
+        this.router.navigate(['/'])
+      }
     }
     else{
       console.log(this.addPropertyForm);
-      console.log('Form failed, please review.');
+      this.alertify.error('Form failed, please review.');
 
     }
   }
