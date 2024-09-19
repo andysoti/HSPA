@@ -81,25 +81,7 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit(){
     this.NextClicked = true;
-    if (this.BasicInfo.invalid) {
-      this.formTabs!.tabs[0].active = true; // activate that tab
-      return;
-  }
 
-  if (this.PriceInfo.invalid) {
-      this.formTabs!.tabs[1].active = true;
-      return;
-  }
-
-  if (this.AddressInfo.invalid) {
-      this.formTabs!.tabs[2].active = true;
-      return;
-  }
-
-  if (this.OtherInfo.invalid) {
-      this.formTabs!.tabs[3].active = true;
-      return;
-  }
 
     console.log('Form, submitted.');
     console.log('SellRent=' + this.addPropertyForm!.value.BasicInfo.SellRent)
@@ -114,23 +96,51 @@ export class AddPropertyComponent implements OnInit {
     }
 }
 
-  //getter
 
-  get BasicInfo() {
-    return this.addPropertyForm.controls['BasicInfo'] as FormGroup;
-}
 
-get PriceInfo() {
-    return this.addPropertyForm.controls['PriceInfo'] as FormGroup;
-}
+  allTabsValid(): boolean{
+    if (this.BasicInfo.invalid) {
+      this.formTabs!.tabs[0].active = true; // activate that tab
+      return false;
+  }
 
-get AddressInfo() {
-    return this.addPropertyForm.controls['AddressInfo'] as FormGroup;
-}
+  if (this.PriceInfo.invalid) {
+      this.formTabs!.tabs[1].active = true;
+      return false;
+  }
 
-get OtherInfo() {
-    return this.addPropertyForm.controls['OtherInfo'] as FormGroup;
-}
+  if (this.AddressInfo.invalid) {
+      this.formTabs!.tabs[2].active = true;
+      return false;
+  }
+
+  if (this.OtherInfo.invalid) {
+      this.formTabs!.tabs[3].active = true;
+      return false;
+  }
+    return true;
+
+  }
+
+
+
+// #region <Getter Methods>
+  // #region <FormGroups>
+    get BasicInfo() {
+      return this.addPropertyForm.controls['BasicInfo'] as FormGroup;
+  }
+
+  get PriceInfo() {
+      return this.addPropertyForm.controls['PriceInfo'] as FormGroup;
+  }
+
+  get AddressInfo() {
+      return this.addPropertyForm.controls['AddressInfo'] as FormGroup;
+  }
+
+  get OtherInfo() {
+      return this.addPropertyForm.controls['OtherInfo'] as FormGroup;
+  }
 
 // control getters
 get SellRent() {
@@ -148,6 +158,11 @@ get PType() {
 get FType() {
   return this.BasicInfo.controls['FType'] as FormControl;
 }
+
+get RTM() {
+  return this.BasicInfo.controls['RTM'] as FormControl;
+}
+
 
 get Name() {
   return this.BasicInfo.controls['Name'] as FormControl;
@@ -167,6 +182,14 @@ get BuiltArea() {
 
 get CarpetArea() {
   return this.PriceInfo.controls['CarpetArea'] as FormControl;
+}
+
+get Security() {
+  return this.PriceInfo.controls['Security'] as FormControl;
+}
+
+get Maintenance() {
+  return this.PriceInfo.controls['Maintenance'] as FormControl;
 }
 
 }
