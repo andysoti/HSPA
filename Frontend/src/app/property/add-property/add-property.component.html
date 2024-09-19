@@ -140,26 +140,38 @@
                       </div>
                 </tab>
                 
-                <tab heading="Address">
+                <tab heading="Address" formGroupName="AddressInfo">
                 
                   <div class="form-group col-12">
                     <label>Floor</label>
-                    <input type="text" class="form-control">
+                    <input type="text"
+                    formControlName="FloorNo"
+                    class="form-control">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Total Floor</label>
-                    <input type="text" class="form-control">
+                    <input type="text"
+                    formControlName="TotalFloor"
+                    class="form-control">
                   </div>
 
                   <div class="form-group col-12">
                     <label>Address</label>
-                    <input type="text" class="form-control">
+                    <input type="text"
+                    class="form-control"
+                    formControlName="Address">
+                    <div class="error-block"
+                    *ngIf="Address.invalid && (NextClicked || Address.touched)">
+                      Please select address
+                    </div>
                   </div>
 
                   <div class="form-group col-12">
                     <label>Landmark</label>
-                    <input type="text" class="form-control">
+                    <input type="text"
+                    formControlName="LandMark"
+                    class="form-control">
                   </div>
 
                         <div class="form-group col-12">
@@ -167,24 +179,44 @@
                           <button  type="button" class="btn btn-primary btn-block me-3 mt-2" (click)="selectTab(3, AddressInfo.valid)">Next</button>
                         </div>
                 </tab>
-                <tab heading="Other Details">
-                  
-
+                <tab heading="Other Details" formGroupName="OtherInfo">
                   <div class="form-group col-12">
-                    <label>Ready to Move</label><br/>
-                    <input type="radio" id='Yes' value='1' name="RTM">
-                    <label class="m-2">Yes</label>
-
-                    <input type="radio" id="No" value='2' name="RTM">
-                    <label class="m-2">No</label>
+                    <p>Ready to Move</p>
+                    <div class="btn-group" btnRadioGroup
+                    formControlName="RTM">
+                      <label class="btn btn-outline-primary mr-2"
+                        btnRadio=true tabindex="0" role="button"
+                        (click)="propertyView.RTM=true"
+                        name="RTM">Yes
+                      </label>
+  
+                      <label class="btn btn-outline-primary"
+                        btnRadio=false  tabindex="0" role="button"
+                        (click)="propertyView.RTM=false"
+                        name="RTM">No
+                      </label>
+                    </div>
+                    <div class="error-block" *ngIf="RTM.invalid && NextClicked">
+                      Please select ready to move
+                    </div>
                   </div>
 
-                      <div class="form-group col-3">
-                        <input type="text"
-                        placeholder="Available From"
-                        class="form-control"
-                        bsDatepicker [bsConfig]="{containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY'}">
-                      </div>
+                  <div class="form-group col-6">
+                    <label *ngIf="propertyView.RTM">Establishment Date</label>
+                    <label *ngIf="!propertyView.RTM">Possession Date</label>
+                    <input type="text"
+                    class="form-control"
+                    formControlName="PossessionOn"
+                    #possessionOn
+                    (bsValueChange)="propertyView.estPossessionOn=possessionOn.value"
+                    bsDatepicker
+                    [bsConfig]="{containerClass: 'theme-dark-blue',
+                    dateInputFormat: 'MMM DD, YYYY'}">
+                    <div class="error-block" *ngIf="PossessionOn.invalid
+                      && (NextClicked || PossessionOn.touched)">
+                      Please select establishment/possession date
+                    </div>
+                  </div>
                     
 
                       <div class="form-group col-12">
@@ -204,7 +236,7 @@
                   </div>
 
                   <div class="form-group col-12">
-                    <p>Ready to Move</p>
+                    <p>Main Entrance</p>
                     <div class="btn-group" btnRadioGroup>
                       <label class="btn btn-outline-primary mr-2"
                       btnRadio=1 tabindex="0" role="button" name="Entrance">East</label>
