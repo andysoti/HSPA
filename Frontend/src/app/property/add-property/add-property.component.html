@@ -82,7 +82,13 @@
                             <label for="name">City</label>
                             <input type="text" class="form-control"  formControlName="City"
                             name="City" >
+                            <div class="error-block"
+                            *ngIf="City.invalid && (NextClicked || City.touched)">
+                              Please enter city
+                            </div>
                           </div>
+
+
                           <div class="form-group col-12">
                             <button  type="button"
                                     class="btn btn-primary btn-block me-3 mt-2" 
@@ -105,10 +111,12 @@
                     </div>
                     </div>
 
+                    <div *ngIf="SellRent.value==2">
                     <div class="form-group col-12">
                       <label>Security (in USD)</label>
                       <input type="text" class="form-control">
                     </div>
+                  </div>
 
                     <div class="form-group col-12">
                       <label>Maintenance (in USD)</label>
@@ -161,6 +169,7 @@
                 </tab>
                 <tab heading="Other Details">
                   
+
                   <div class="form-group col-12">
                     <label>Ready to Move</label><br/>
                     <input type="radio" id='Yes' value='1' name="RTM">
@@ -169,13 +178,14 @@
                     <input type="radio" id="No" value='2' name="RTM">
                     <label class="m-2">No</label>
                   </div>
-     
+
                       <div class="form-group col-3">
                         <input type="text"
                         placeholder="Available From"
                         class="form-control"
                         bsDatepicker [bsConfig]="{containerClass: 'theme-dark-blue', dateInputFormat: 'DD-MM-YYYY'}">
                       </div>
+                    
 
                       <div class="form-group col-12">
                         <label>Age of Property</label>

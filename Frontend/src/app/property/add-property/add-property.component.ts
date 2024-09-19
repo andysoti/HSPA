@@ -81,11 +81,15 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit(){
     this.NextClicked = true;
+    if(this.allTabsValid()){
+      console.log('Form, submitted.');
+    // console.log('SellRent=' + this.addPropertyForm!.value.BasicInfo.SellRent)
+       console.log(this.addPropertyForm);
+    }
+    else{
+      console.log('Form failed, please review.');
 
-
-    console.log('Form, submitted.');
-    console.log('SellRent=' + this.addPropertyForm!.value.BasicInfo.SellRent)
-    console.log(this.addPropertyForm);
+    }
   }
 
   selectTab(NextTabId: number, IsCurrentTabValid: boolean) {
