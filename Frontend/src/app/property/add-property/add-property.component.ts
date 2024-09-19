@@ -41,6 +41,7 @@ export class AddPropertyComponent implements OnInit {
 
   onSubmit(){
     console.log('Form, submitted.');
+    console.log('SellRent=' + this.addPropertyForm!.value.BasicInfo.SellRent)
     console.log(this.addPropertyForm);
   }
 
