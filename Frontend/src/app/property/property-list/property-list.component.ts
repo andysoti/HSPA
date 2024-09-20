@@ -11,8 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PropertyListComponent implements OnInit {
 SellRent = 1;
-
-  properties!: IPropertyBase[];
+properties!: IPropertyBase[];
+Today = new Date();
 
 constructor(private route: ActivatedRoute, private housingService: HousingService) {}
 

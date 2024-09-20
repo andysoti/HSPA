@@ -1,5 +1,7 @@
+
+
 <div class="row">
-    <div *ngFor="let p of properties" class="col-sm-4">
+    <div *ngFor="let p of properties|filter:'':'City'|sort:['Price', 'desc']" class="col-sm-4">
       <div class="shadow-lg p-3 mb-4">
           <app-property-card [property]="p"></app-property-card>
       </div>
