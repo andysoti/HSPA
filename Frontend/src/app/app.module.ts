@@ -24,6 +24,10 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PropertyDetailResolverService } from './property/property-detail/property-detail-resolver.service';
+// import { HttpClientModule} from '@angular/common/http';
+import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+
+
 
 const appRoutes: Routes = [
   {path: 'add-property', component: AddPropertyComponent},
@@ -60,6 +64,7 @@ const appRoutes: Routes = [
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    HttpClientModule, NgxGalleryModule
     // HttpClientModule
   ],
   providers: [provideHttpClient(), 

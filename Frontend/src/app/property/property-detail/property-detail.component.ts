@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HousingService } from '../../services/housing.service';
 import { Property } from '../../model/property';
+import { NgxGalleryImage, NgxGalleryOptions, NgxGalleryAnimation } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-property-detail',
@@ -11,6 +12,8 @@ import { Property } from '../../model/property';
 export class PropertyDetailComponent implements OnInit {
 public propertyId!: number;
 property = new Property();
+galleryOptions!: NgxGalleryOptions[];
+galleryImages!: NgxGalleryImage[];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -35,8 +38,47 @@ property = new Property();
     //   }
     // );
 
+    this.galleryOptions = [
+      {
+        width: '100%',
+        height: '465px',
+        thumbnailsColumns: 4,
+        imageAnimation: NgxGalleryAnimation.Slide,
+        preview: true
+      }
+    ];
+    this.galleryImages = [
+      {
+        small: '/images/prop-4.png',
+        medium: '/images/prop-4.png',
+        big: '/images/prop-4.png'
+      },
+      {
+        small: '/images/prop-4.png',
+        medium: '/images/prop-4.png',
+        big: '/images/prop-4.png'
+      },
+      {
+        small: '/images/prop-4.png',
+        medium: '/images/prop-4.png',
+        big: '/images/prop-4.png'
+      },
+      {
+        small: '/images/prop-4.png',
+        medium: '/images/prop-4.png',
+        big: '/images/prop-4.png'
+      },
+      {
+        small: '/images/prop-4.png',
+        medium: '/images/prop-4.png',
+        big: '/images/prop-4.png'
+      }
+    ];
+
   }
 }
+
+
 
 
 
