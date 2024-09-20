@@ -5,6 +5,7 @@ import { IPropertyBase } from '../model/iPropertybase';
 import { Observable } from 'rxjs';
 import { IProperty } from '../model/iproperty';
 import { Property } from '../model/property';
+// import {error} from '@angular/compiler/src/util';
 
 @Injectable({
   providedIn: 'root'
@@ -21,10 +22,10 @@ export class HousingService { // shared instance of service
     );
   }
 
-  getAllProperties(SellRent?: number): Observable<IProperty[]>{
+  getAllProperties(SellRent?: number): Observable<Property[]>{
     return this.http.get('data/properties.json').pipe(
       map(data=> {
-        const propertiesArray: Array<IProperty> = [];
+        const propertiesArray: Array<Property> = [];
         
         const localProperties = JSON.parse(localStorage.getItem('newProp')!);
         if (localProperties) {
@@ -53,7 +54,7 @@ export class HousingService { // shared instance of service
         return propertiesArray;
       })
     );
-
+    return this.http.get<Property[]>('data/properties.json');
     }
 
 
