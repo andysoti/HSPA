@@ -2,8 +2,9 @@
     <!-- <div class="card-img-wrapper" (mouseenter)="onMouseEnter()" [@scaleAnimation]="fadeInStart" style="border-right: solid;"> -->
     <div class="card-img-wrapper">
         <!-- in video image ref has .png always -->
-        <img *ngIf="property.Image" class="card-img-top" src="/images/{{property.Image}}" >
-        <img *ngIf="!property.Image" class="card-img-top" src="/images/house_default.png" >        
+
+        <img *ngIf="property.Image == 'propNA' || !property.Image" class="card-img-top" src="/images/house_default.png"> 
+        <img *ngIf="property.Image && property.Image != 'propNA'" class="card-img-top" src="/images/{{property.Image}}" >
         <ul *ngIf="!hideIcons"  class="list-inline text-center member-icons animate">
             <li class="list-inline-item">
                 <button class="btn btn-primary" routerLink="/property-detail/{{property.id}}"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -20,7 +21,7 @@
     <span *ngIf="property.Name">,</span>
     {{property.City}}
     <h6  class="mt-2">{{property.FType}}
-    <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> | Ready to Move</h6>
+    <span *ngIf="property.FType !== 'Unfurnished'">Furnished</span> | <span *ngIf="property.RTM">Ready to Move</span></h6>
     <hr class="mt-0 mb-2">
     <h6 class="mb-0">Price: <span class="font-highlight">{{property.Price}} USD.</span> |
       Area:  <span class="font-highlight" >{{property.BuiltArea}} Sq Ft </span> </h6>

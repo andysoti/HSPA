@@ -22,7 +22,8 @@
 
                   <div class="form-group col-12 mt-2">
                     <p>BHK</p>
-                      <div class="btn-group" btnRadioGroup name="BHK" formControlName="BHK">
+                      <div class="btn-group" btnRadioGroup name="BHK" formControlName="BHK"
+                      ngModel [(ngModel)]="propertyView.BHK">
                         <label
                         *ngFor="let bhk of [1,2,3,4]"
                         class="btn btn-outline-primary mr-2"
@@ -35,7 +36,8 @@
 
                           <div class="form-group col-12 mt-2">
                             <p>Property Type</p>
-                              <div class="btn-group" btnRadioGroup formControlName="PType">
+                              <div class="btn-group" btnRadioGroup formControlName="PType"
+                              ngModel [(ngModel)]="propertyView.PType">
                                 <label
                                 *ngFor="let ptype of propertyTypes"
                                 class="btn btn-outline-primary mr-2"
@@ -50,7 +52,8 @@
 
                             <div class="form-group col-12 mt-3">
                               <p>Furnishing Type</p>
-                                <div class="btn-group" btnRadioGroup name="FType" formControlName="FType">
+                                <div class="btn-group" btnRadioGroup name="FType" formControlName="FType"
+                                ngModel [(ngModel)]="propertyView.FType">
                                   <label
                                   *ngFor="let ftype of furnishTypes"
                                   class="btn btn-outline-primary mr-2"
@@ -79,8 +82,8 @@
 
 
                           <div class="form-group col-12 mt-2">
-                            <label for="name">City</label>
-                            <input type="text" class="form-control"  formControlName="City"
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" ngModel [(ngModel)]="propertyView.City" formControlName="City"
                             name="City" >
                             <div class="error-block"
                             *ngIf="City.invalid && (NextClicked || City.touched)">
