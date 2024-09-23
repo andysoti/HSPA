@@ -14,6 +14,10 @@ export class HousingService { // shared instance of service
 
   constructor(private http:HttpClient) { }
 
+  getAllCities(): Observable<string[]> {
+    return this.http.get<string[]>('http://localhost:5138/api/city');
+  }
+
   getProperty(id: number) {
     return this.getAllProperties().pipe(
       map(propertiesArray => {
@@ -26,7 +30,7 @@ export class HousingService { // shared instance of service
     return this.http.get('data/properties.json').pipe(
       map(data=> {
         const propertiesArray: Array<Property> = [];
-        
+
         const localProperties = JSON.parse(localStorage.getItem('newProp')!);
         if (localProperties) {
           for (const id in localProperties) {
@@ -45,7 +49,7 @@ export class HousingService { // shared instance of service
               if (SellRent) {
                     if (data.hasOwnProperty(id) && (data as any)[id].SellRent === SellRent){
                         propertiesArray.push((data as any)[id]);} // changed from data to (data as any)
-              } 
+              }
               else {
                       propertiesArray.push((data as any)[id]);
               }

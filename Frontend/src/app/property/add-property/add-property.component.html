@@ -18,7 +18,7 @@
                       <label class="btn btn-outline-primary" btnRadio=2 tabindex="0" role="button" name = "SellRent">Rent</label>
                     </div>
                     <div class="error-block" *ngIf="SellRent.invalid && NextClicked"> Please Select Rent or Sell</div>
-                  </div> 
+                  </div>
 
                   <div class="form-group col-12 mt-2">
                     <p>BHK</p>
@@ -68,7 +68,7 @@
 
                               <div class="form-group col-12 mt-4">
                                 <label for="name">In Building/Project</label>
-                                <input type="text" class="form-control" 
+                                <input type="text" class="form-control"
                                 ngModel formControlName="Name"  minlength="5" [(ngModel)]="propertyView.Name">
                                 <!-- <span *ngIf="!propName.valid && propName.touched" class="error-block">
                                   <span *ngIf="propName.errors!['required']">Please Provide Name</span>
@@ -83,8 +83,15 @@
 
                           <div class="form-group col-12 mt-2">
                             <label for="city">City</label>
-                            <input type="text" class="form-control" ngModel [(ngModel)]="propertyView.City" formControlName="City"
-                            name="City" >
+
+                            <select class="form-control" [(ngModel)]="propertyView.City"
+                            formControlName="City" name="City">
+                                <option value=''>--Select City--</option>
+                                <option *ngFor="let city of cityList" value={{city}}>
+                                  {{city}}
+                                </option>
+                            </select>
+
                             <div class="error-block"
                             *ngIf="City.invalid && (NextClicked || City.touched)">
                               Please enter city
@@ -94,7 +101,7 @@
 
                           <div class="form-group col-12">
                             <button  type="button"
-                                    class="btn btn-primary btn-block me-3 mt-2" 
+                                    class="btn btn-primary btn-block me-3 mt-2"
                                     (click)="selectTab(1, (BasicInfo.valid))">Next</button>
                           </div>
 
@@ -104,7 +111,7 @@
                     <div class="form-group col-12"  >
                       <label *ngIf="SellRent.value==2">Rent (in USD)</label>
                       <label *ngIf="SellRent.value==1">Price (in USD)</label>
-                      <input type="text" class="form-control" 
+                      <input type="text" class="form-control"
                       formControlName="Price" [(ngModel)]="propertyView.Price">
                       <div class="error-block"
                     *ngIf="Price.invalid && (NextClicked || Price.touched)">
@@ -142,9 +149,9 @@
                         <button  type="button" class="btn btn-primary btn-block me-3 mt-2" (click)="selectTab(2, PriceInfo.valid)">Next</button>
                       </div>
                 </tab>
-                
+
                 <tab heading="Address" formGroupName="AddressInfo">
-                
+
                   <div class="form-group col-12">
                     <label>Floor</label>
                     <input type="text"
@@ -192,7 +199,7 @@
                         (click)="propertyView.RTM=true"
                         name="RTM">Yes
                       </label>
-  
+
                       <label class="btn btn-outline-primary"
                         btnRadio=false  tabindex="0" role="button"
                         (click)="propertyView.RTM=false"
@@ -220,13 +227,13 @@
                       Please select establishment/possession date
                     </div>
                   </div>
-                    
+
 
                       <div class="form-group col-12">
                         <label>Age of Property</label>
                         <input type="text" class="form-control">
                       </div>
-                
+
 
                   <div class="form-group col-12 mt-2">
                     <p>Gated Community</p>
@@ -277,7 +284,7 @@
                         <div class="d-grid gap-2">
                           <button  type="submit" class="btn btn-success me-3 mt-5">Submit</button>
                           <button  type="reset" class="btn btn-secondary me-3">Cancel</button>
-                        
+
                       </div>
                 </tab>
               </tabset>
