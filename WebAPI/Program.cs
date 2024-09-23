@@ -1,4 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using WebAPI.Data;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+// I added this, Iconfiguration instance
+var configuration = builder.Configuration;
+
+
 
 // Add services to the container.
 
@@ -10,6 +21,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 // New stuf:
 builder.Services.AddCors();
+builder.Services.AddDbContext<DataContext>(options => 
+            options.UseSqlServer(configuration.GetConnectionString("Default")));
 
 
 
