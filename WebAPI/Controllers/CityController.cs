@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 //using WebAPI.Models;
-
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
@@ -15,34 +14,12 @@ namespace WebAPI.Controllers
         {
         }
 
+        
+        // GET api/city
         [HttpGet("")]
-        public ActionResult<IEnumerable<TModel>> GetTModels()
+        public IEnumerable<string> Getstrings()
         {
-            return new List<TModel> { };
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<TModel> GetTModelById(int id)
-        {
-            return null;
-        }
-
-        [HttpPost("")]
-        public ActionResult<TModel> PostTModel(TModel model)
-        {
-            return null;
-        }
-
-        [HttpPut("{id}")]
-        public IActionResult PutTModel(int id, TModel model)
-        {
-            return NoContent();
-        }
-
-        [HttpDelete("{id}")]
-        public ActionResult<TModel> DeleteTModelById(int id)
-        {
-            return null;
+            return new string[] {"Atlanta", "New York", "Chicago", "Boston"};
         }
     }
 }
