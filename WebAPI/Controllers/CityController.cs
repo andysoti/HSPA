@@ -27,16 +27,17 @@ namespace WebAPI.Controllers
             return Ok(cities);
             // return new string[] {"Atlanta", "New York", "Chicago", "Boston", "Toronto", "Detroit"};
         }
-
-        // [HttpPost]
-        // public async Task<IActionResult> AddCity(City city)
-        // {
-        //     // City city = new City();
-        //     // city.Name=cityName;
-        //     await dc.Cities.AddAsync(city);
-        //     await dc.SaveChangesAsync();
-        //     return Ok(city);
-        // }  
+ 
+        // POST api/city/add?cityname=Miami 
+        [HttpPost("add")]
+        public async Task<IActionResult> AddCity(string cityName)
+        {
+            City city = new City();
+            city.Name=cityName;
+            await dc.Cities.AddAsync(city);
+            await dc.SaveChangesAsync();
+            return Ok(city);
+        }  
 
 
 
