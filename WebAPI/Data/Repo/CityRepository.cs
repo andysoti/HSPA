@@ -1,8 +1,11 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using WebAPI.Interfaces;
 using WebAPI.Models;
+
 namespace WebAPI.Data.Repo
+
 {
     public class CityRepository : ICityRepository
     {
@@ -13,7 +16,7 @@ namespace WebAPI.Data.Repo
         }
         public void AddCity(City city)
         {
-            dc.Cities.AddAsync(city);
+            dc.Cities.Add(city);
         }
         public void DeleteCity(int CityId)
         {
@@ -24,9 +27,6 @@ namespace WebAPI.Data.Repo
         {
             return await dc.Cities.ToListAsync();
         }
-        public async Task<bool> SaveAsync()
-        {
-            return await dc.SaveChangesAsync() > 0;
-        }
+
     }
-}
+}                                                
