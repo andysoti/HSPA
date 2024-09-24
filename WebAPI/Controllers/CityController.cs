@@ -51,6 +51,17 @@ namespace WebAPI.Controllers
             return Ok(city);
         }  
 
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteCity(int id)
+        {
+            var city = await dc.Cities.FindAsync(id);
+            
+            if(city == null)
+                return NotFound();
+            dc.Cities.Remove(city);
+            await dc.SaveChangesAsync();
+            return Ok(id);
+        }  
 
 
     }
