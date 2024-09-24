@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using WebAPI.Data;
 using WebAPI.Data.Repo;
+using WebAPI.Helpers;
 using WebAPI.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,8 +27,9 @@ builder.Services.AddCors();
 builder.Services.AddDbContext<DataContext>(options => 
             options.UseSqlServer(configuration.GetConnectionString("Default")));
 
+builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+ 
 
 builder.Services.AddControllers();
 var app = builder.Build();
