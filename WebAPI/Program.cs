@@ -30,7 +30,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
  
-
+builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddControllers();
 var app = builder.Build();
 
