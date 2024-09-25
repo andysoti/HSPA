@@ -1,11 +1,15 @@
+using System.Net;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.AspNetCore.Http;
 using WebAPI.Data;
 using WebAPI.Data.Repo;
 using WebAPI.Helpers;
 using WebAPI.Interfaces;
+using WebAPI.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,7 @@ builder.Services.AddEndpointsApiExplorer();
 // builder.Services.AddSwaggerGen(); // REMOVE
 
 // New stuf:
+
 builder.Services.AddCors();
 builder.Services.AddDbContext<DataContext>(options => 
             options.UseSqlServer(configuration.GetConnectionString("Default")));
@@ -42,6 +47,11 @@ var app = builder.Build();
 // }
 
 // New Stuff:
+
+var env = app.Environment;
+app.ConfigureExceptionHandler(env);
+
+
  app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
  //
 
