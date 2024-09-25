@@ -10,6 +10,7 @@ using WebAPI.Data.Repo;
 using WebAPI.Helpers;
 using WebAPI.Interfaces;
 using WebAPI.Extensions;
+using WebAPI.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,7 +50,7 @@ var app = builder.Build();
 // New Stuff:
 
 var env = app.Environment;
-app.ConfigureExceptionHandler(env);
+app.ConfigureExceptionHandler(env);                                  
 
 
  app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
