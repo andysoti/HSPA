@@ -67,8 +67,24 @@ namespace WebAPI.Controllers
             return StatusCode(200);
         }
 
-        // [HttpPut("updateCountry/{id}")]
-        // public async Task<IActionResult> UpdateCity(int id, CityUpdateDto cityDto)
+        // Uses a cityupdate dto that only changes the name (dto only has name field)
+        [HttpPut("updateCityName/{id}")]
+        public async Task<IActionResult> UpdateCity(int id, CityUpdateDto cityDto)
+        {
+            var cityFromDb = await uow.CityRepository.FindCity(id);
+            cityFromDb.LastUpdatedBy = 1;
+            cityFromDb.LastUpdatedOn = DateTime.Now;
+            mapper.Map(cityDto, cityFromDb);
+            await uow.SaveAsync();
+            return StatusCode(200);
+        }
+        
+
+        // Patch will not be used in this application - being less supported in Dotnet core
+        // also less performance with newtonsoft
+        // // compromises securtiy (user can cahnge patch operation)
+        // [HttpPatch("update/{id}")]
+        // public async Task<IActionResult> UpdateCityPatch(int id, JsonPatchDocument<City> cityToPatch)
         // {
         //     var cityFromDb = await uow.CityRepository.FindCity(id);
         //     cityFromDb.LastUpdatedBy = 1;
