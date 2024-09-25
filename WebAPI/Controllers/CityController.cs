@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Dtos;
 using WebAPI.Interfaces;
@@ -76,16 +77,22 @@ namespace WebAPI.Controllers
         //     await uow.SaveAsync();
         //     return StatusCode(200);
         // }
-        // [HttpPatch("update/{id}")]
-        // public async Task<IActionResult> UpdateCityPatch(int id, JsonPatchDocument<City> cityToPatch)
-        // {
-        //     var cityFromDb = await uow.CityRepository.FindCity(id);
-        //     cityFromDb.LastUpdatedBy = 1;
-        //     cityFromDb.LastUpdatedOn = DateTime.Now;
-        //     cityToPatch.ApplyTo(cityFromDb, ModelState);
-        //     await uow.SaveAsync();
-        //     return StatusCode(200);
-        // }
+        
+
+        // Patch will not be used in this application - being less supported in Dotnet core
+        // also less performance with newtonsoft
+        [HttpPatch("update/{id}")]
+        public async Task<IActionResult> UpdateCityPatch(int id, JsonPatchDocument<City> cityToPatch)
+        {
+            var cityFromDb = await uow.CityRepository.FindCity(id);
+            cityFromDb.LastUpdatedBy = 1;
+            cityFromDb.LastUpdatedOn = DateTime.Now;
+             
+             // JSON patch support multiple operations, here replace is being used (this is specified in the packet)
+            cityToPatch.ApplyTo(cityFromDb, ModelState);
+            await uow.SaveAsync();
+            return StatusCode(200);
+        }
 
 
         [HttpDelete("delete/{id}")]
