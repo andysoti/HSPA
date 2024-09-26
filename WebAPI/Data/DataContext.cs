@@ -8,5 +8,7 @@ namespace WebAPI.Data
 
         // wil reference db table
         public DbSet<City> Cities { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

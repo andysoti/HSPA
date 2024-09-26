@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jNoLMQbJjvQLEHjI5+7aaqmDqi7LXsdHvXUzKj8cTxxIWhgS92sxSF1RgP8QORqgTi0zkuxInJMbnIl2zXROtA==",
+  "dgSpecHash": "b8MbD9uQkUyDocRRqqXNnEac3z+ybNo168DS2sCfH900dJRTKG2u3LL+cq9Rozetco2CALdg7Ou5SEZWxe7tfA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agoetz\\.nuget\\packages\\automapper\\8.0.0\\automapper.8.0.0.nupkg.sha512",
     "C:\\Users\\agoetz\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\6.0.0\\automapper.extensions.microsoft.dependencyinjection.6.0.0.nupkg.sha512",

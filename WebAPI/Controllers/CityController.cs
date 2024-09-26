@@ -12,9 +12,9 @@ using WebAPI.Models;
 namespace WebAPI.Controllers
 {
     // Attributes decorate the class
-    [Route("api/[controller]")]
-    [ApiController]
-    public class CityController : ControllerBase
+
+    
+    public class CityController : BaseController
     {
         private readonly IUnitOfWork uow;
         private readonly IMapper mapper;

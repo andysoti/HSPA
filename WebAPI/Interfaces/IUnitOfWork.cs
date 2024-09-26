@@ -6,6 +6,11 @@ namespace WebAPI.Interfaces
 
         // MUltiple differetnrepos can be added to unit of work
          ICityRepository CityRepository {get; }
+
+        IUserRepository UserRepository {get; }
+
          Task<bool> SaveAsync();
+
+        
     }
 }
