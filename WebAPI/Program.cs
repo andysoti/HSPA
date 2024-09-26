@@ -42,8 +42,10 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddControllers();
 
+
+ var secretKey = configuration.GetSection("AppSettings:Key").Value;
 var key = new SymmetricSecurityKey(Encoding.UTF8
-    .GetBytes("shhh.. this is my top secret"));
+    .GetBytes(secretKey));
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt => {
         opt.TokenValidationParameters = new TokenValidationParameters

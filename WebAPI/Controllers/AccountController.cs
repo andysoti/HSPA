@@ -12,9 +12,12 @@ namespace WebAPI.Controllers
 {
     public class AccountController : BaseController
     {
-        private readonly IUnitOfWork uow;
-        public AccountController(IUnitOfWork uow)
+        
+         private readonly IUnitOfWork uow;
+        private readonly IConfiguration configuration;
+        public AccountController(IUnitOfWork uow, IConfiguration configuration)
         {
+            this.configuration = configuration;
             this.uow = uow;
         }
 
@@ -38,9 +41,10 @@ namespace WebAPI.Controllers
 
         private string CreateJWT(User user)
         {
+            var secretKey = configuration.GetSection("AppSettings:Key").Value;
             var key = new SymmetricSecurityKey(Encoding.UTF8
-                .GetBytes("shhh.. this is my top secret"));
-            
+                .GetBytes(secretKey));
+                        
             var claims = new Claim[] {
                 new Claim(ClaimTypes.Name,user.Username),
                 new Claim(ClaimTypes.NameIdentifier,user.Id.ToString())

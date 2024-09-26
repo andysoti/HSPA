@@ -15,7 +15,7 @@ namespace WebAPI.Controllers
     // Attributes decorate the class
 
     [Authorize]
-    // [AllowAnonymous]
+    [AllowAnonymous]
     public class CityController : BaseController
     {
         private readonly IUnitOfWork uow;
