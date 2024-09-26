@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\WebAPI.csproj": {}
+    "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\WebAPI.csproj": {
+    "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\WebAPI.csproj",
+        "projectPath": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\agoetz\\.nuget\\packages\\",
-        "outputPath": "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\obj\\",
+        "outputPath": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\ANgular\\HSPA\\webapi\\NuGet.Config",
+          "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\WebAPI\\NuGet.Config",
           "C:\\Users\\agoetz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -45,6 +45,10 @@
           "targetAlias": "net6.0",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[6.0.0, )"
             },

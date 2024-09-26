@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Dtos;
@@ -13,7 +14,8 @@ namespace WebAPI.Controllers
 {
     // Attributes decorate the class
 
-    
+    [Authorize]
+    // [AllowAnonymous]
     public class CityController : BaseController
     {
         private readonly IUnitOfWork uow;

@@ -11,6 +11,9 @@ using WebAPI.Helpers;
 using WebAPI.Interfaces;
 using WebAPI.Extensions;
 using WebAPI.Middlewares;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,14 +41,22 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
  
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddControllers();
+
+var key = new SymmetricSecurityKey(Encoding.UTF8
+    .GetBytes("shhh.. this is my top secret"));
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(opt => {
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            IssuerSigningKey = key
+        };
+    });
+
 var app = builder.Build();
 
-// // Configure the HTTP request pipeline. REMOVE
-// if (app.Environment.IsDevelopment())
-// {
-//     app.UseSwagger();
-//     app.UseSwaggerUI();
-// }
 
 // New Stuff:
 
@@ -56,7 +67,7 @@ app.ConfigureExceptionHandler(env);
  app.UseCors(m => m.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
  //
 
-
+app.UseAuthentication(); // video 44
 app.UseAuthorization();
 
 app.MapControllers();

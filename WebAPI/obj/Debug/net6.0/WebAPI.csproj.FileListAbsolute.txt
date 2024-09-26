@@ -65,3 +65,4 @@ C:\users\agoetz\OneDrive - SOTI Inc\Angular Training\ANgular\HSPA\webapi\bin\Deb
 C:\users\agoetz\OneDrive - SOTI Inc\Angular Training\ANgular\HSPA\webapi\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\users\agoetz\OneDrive - SOTI Inc\Angular Training\ANgular\HSPA\webapi\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\users\agoetz\OneDrive - SOTI Inc\Angular Training\ANgular\HSPA\webapi\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\agoetz\OneDrive - SOTI inc\Angular Training\Angular\hspa\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
