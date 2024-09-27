@@ -14,6 +14,7 @@ using WebAPI.Middlewares;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
+using Microsoft.Data.SqlClient;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,14 +29,21 @@ var configuration = builder.Configuration;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-// builder.Services.AddSwaggerGen(); // REMOVE
+//
+var connbuilder = new SqlConnectionStringBuilder(
+                configuration.GetConnectionString("Default"));
+connbuilder.Password = configuration.GetSection("DBPassword").Value; // "sa";
+var connectionString = connbuilder.ConnectionString;
+//
+
 
 // New stuf:
 
 builder.Services.AddCors();
 builder.Services.AddDbContext<DataContext>(options => 
-            options.UseSqlServer(configuration.GetConnectionString("Default")));
-
+            // options.UseSqlServer(configuration.GetConnectionString("Default"))); 
+               options.UseSqlServer(connectionString));
+ 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
  
