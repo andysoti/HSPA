@@ -2,14 +2,14 @@
   <div class="col-6 m-auto">
   <div class="card m-auto">
     <div class="card-header">
-      Register
+      <h3>Register</h3>
     </div>
     <div class="card-body">
       <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
         <div class="form-group col-12">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control"  formControlName="userName"  >
-            
+
             <span class="error-block" *ngIf="!userName!.valid && (userName!.touched || userSubmitted)">
               Please Provide Name
             </span>
@@ -18,17 +18,17 @@
         <div class="form-group col-12">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control" formControlName="email">
-        
+
           <span class="error-block" *ngIf="!email!.valid && (email!.touched || userSubmitted)">
             <span *ngIf="email!.hasError('required')">
-              Please provide Email 
+              Please provide Email
             </span>
           </span>
-  
+
           <span class="error-block" *ngIf="email!.hasError('email')">
-            Please provide a valid Email 
+            Please provide a valid Email
           </span>
-        
+
         </div>
 
 
