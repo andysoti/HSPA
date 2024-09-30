@@ -30,7 +30,7 @@ namespace WebAPI.Controllers
             var user = await uow.UserRepository.Authenticate(loginReq.UserName, loginReq.Password);
             if(user == null)
             {
-                return Unauthorized();
+                return Unauthorized("Invalid user name or password");
             }
             
             var loginRes = new LoginResDto();
