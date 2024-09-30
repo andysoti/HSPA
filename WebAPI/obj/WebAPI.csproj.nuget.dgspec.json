@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\WebAPI.csproj",
+        "projectPath": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\agoetz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\agoetz\\OneDrive - SOTI inc\\Angular Training\\Angular\\hspa\\WebAPI\\NuGet.Config",
+          "C:\\Users\\agoetz\\OneDrive - SOTI Inc\\Angular Training\\Angular\\HSPA\\webapi\\NuGet.Config",
           "C:\\Users\\agoetz\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
