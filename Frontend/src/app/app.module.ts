@@ -15,7 +15,6 @@ import { PropertyDetailComponent } from './property/property-detail/property-det
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
-import { UserService } from './services/user.service';
 import { AlertifyService } from './services/alertify.service';
 import { AuthService } from './services/auth.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -35,7 +34,7 @@ const appRoutes: Routes = [
   {path: 'add-property', component: AddPropertyComponent},
   {path: 'rent-property', component: PropertyListComponent},
   {path: '', component: PropertyListComponent},
-  {path: 'property-detail/:id', component: PropertyDetailComponent, 
+  {path: 'property-detail/:id', component: PropertyDetailComponent,
           resolve: {prp: PropertyDetailResolverService}},
   {path: 'user/login', component: UserLoginComponent},
   {path: 'user/register', component: UserRegisterComponent},
@@ -43,7 +42,7 @@ const appRoutes: Routes = [
 ]
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     PropertyCardComponent,
     PropertyListComponent,
@@ -71,9 +70,8 @@ const appRoutes: Routes = [
     HttpClientModule, NgxGalleryModule
     // HttpClientModule
   ],
-  providers: [provideHttpClient(), 
-              HousingService, 
-              UserService, 
+  providers: [provideHttpClient(),
+              HousingService,
               AlertifyService,
               AuthService,
               PropertyDetailResolverService

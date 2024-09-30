@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../model/user';
+// import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
+import { UserForRegister } from '../../model/user';
 import { AlertifyService } from '../../services/alertify.service';
 
 
@@ -14,11 +15,11 @@ export class UserRegisterComponent implements OnInit {
 
   //class to organize form reactive control
   registrationForm!: FormGroup;
-  user!: User;
+  user!: UserForRegister;
   userSubmitted: boolean = false;
 
-  constructor(private fb: FormBuilder, 
-            private userService: UserService,
+  constructor(private fb: FormBuilder,
+            private authService: AuthService,
           private alertify: AlertifyService) { }
 
   // ngOnInit() {
@@ -82,28 +83,37 @@ get mobile() {
     return this.registrationForm.get('mobile') as FormControl;
 }
 
-
+onReset() {
+  this.userSubmitted = false;
+  this.registrationForm.reset();
+}
 
   onSubmit(){
     console.log(this.registrationForm.value);
     this.userSubmitted = true;
     if(this.registrationForm.valid){
       // this.user = Object.assign(this.user, this.registrationForm.value); // no longer needed since we created a model
-      
-      this.userService.addUser(this.userData()); //TODO, this should be uncommented
-      // ERROR video 18 save data locally in browser
-     
-      this.registrationForm.reset()
-      this.userSubmitted = false;
-      this.alertify.success("Congrats, you are registered!")
-    } 
+
+      this.authService.registerUser(this.userData()).subscribe(() =>
+        {
+          this.onReset()
+            this.alertify.success('Congrats, you are successfully registered');
+        },error => {
+            console.log(error);
+            this.alertify.error(error.error);
+        });
+
+      // this.registrationForm.reset()
+      // this.userSubmitted = false;
+      // this.alertify.success("Congrats, you are registered!")
+    }
     else{
       this.alertify.error('Kindly fill necessary fields')
     }
   }
 
 
-  userData(): User {
+  userData(): UserForRegister {
     return this.user = {
       // getters the get from registration form
         userName: this.userName.value,

@@ -23,4 +23,8 @@ authUser(user: any){
   // return UserArray.find((p: any) => p.userName === user.userName && p.password === user.password);
 }
 
+registerUser(user: UserForRegister) {
+  return this.http.post(this.baseUrl + '/account/register', user);
+}
+
 }
