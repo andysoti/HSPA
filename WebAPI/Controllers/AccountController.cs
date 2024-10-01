@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using WebAPI.Dtos;
 using WebAPI.Errors;
+using WebAPI.Extensions;
 using WebAPI.Interfaces;
 using WebAPI.Models;
 namespace WebAPI.Controllers
@@ -52,8 +53,9 @@ namespace WebAPI.Controllers
             
             ApiError apiError = new ApiError();
 
-            if(string.IsNullOrEmpty(loginReq.UserName.Trim()) || 
-                string.IsNullOrEmpty(loginReq.Password.Trim())) {
+            // if(string.IsNullOrEmpty(loginReq.UserName.Trim()) || 
+            //     string.IsNullOrEmpty(loginReq.Password.Trim())) {
+            if(loginReq.UserName.IsEmpty() || loginReq.Password.IsEmpty()) {
                     apiError.ErrorCode=BadRequest().StatusCode;
                     apiError.ErrorMessage="User name or password can not be blank";                    
                     return BadRequest(apiError);
