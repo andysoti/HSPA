@@ -24,6 +24,10 @@ namespace WebAPI.Data.Repo
         public async Task<IEnumerable<Property>> GetPropertiesAsync(int sellRent)
         {
             var properties = await dc.Properties
+            .Include(p => p.PropertyType) // navigation properties to join
+            .Include(p => p.City) // these are the foreign keys to relate
+            .Include(p => p.FurnishingType) // Inner Join
+            .Where(p => p.SellRent == sellRent)
             .ToListAsync();
             return properties;
         }
