@@ -11,7 +11,7 @@ import { Property } from '../model/property';
   providedIn: 'root'
 })
 export class HousingService { // shared instance of service
-
+  baseUrl = 'http://localhost:5138/api';
   constructor(private http:HttpClient) { }
 
   getAllCities(): Observable<string[]> {
@@ -19,7 +19,7 @@ export class HousingService { // shared instance of service
   }
 
   getProperty(id: number) {
-    return this.getAllProperties().pipe(
+    return this.getAllProperties(1).pipe(
       map(propertiesArray => {
         return propertiesArray.find(p => p.id === id);
       })
@@ -27,38 +27,9 @@ export class HousingService { // shared instance of service
   }
 
   getAllProperties(SellRent?: number): Observable<Property[]>{
-    return this.http.get('data/properties.json').pipe(
-      map(data=> {
-        const propertiesArray: Array<Property> = [];
+    return this.http.get<Property[]>(this.baseUrl + '/property/list/'+SellRent!.toString());
 
-        const localProperties = JSON.parse(localStorage.getItem('newProp')!);
-        if (localProperties) {
-          for (const id in localProperties) {
-            if(SellRent){
-                if (localProperties.hasOwnProperty(id) && localProperties[id].SellRent === SellRent) {
-                  propertiesArray.push(localProperties[id]);
-                    }
-            }
-                else{
-                  propertiesArray.push(localProperties[id]);
-                }
-          }
-        }
 
-        for (const id in data) {
-              if (SellRent) {
-                    if (data.hasOwnProperty(id) && (data as any)[id].SellRent === SellRent){
-                        propertiesArray.push((data as any)[id]);} // changed from data to (data as any)
-              }
-              else {
-                      propertiesArray.push((data as any)[id]);
-              }
-          }
-
-        return propertiesArray;
-      })
-    );
-    return this.http.get<Property[]>('data/properties.json');
     }
 
 
@@ -85,3 +56,47 @@ export class HousingService { // shared instance of service
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+    // return this.http.get('data/properties.json').pipe(
+    //   map(data=> {
+    //     const propertiesArray: Array<Property> = [];
+
+    //     const localProperties = JSON.parse(localStorage.getItem('newProp')!);
+    //     if (localProperties) {
+    //       for (const id in localProperties) {
+    //         if(SellRent){
+    //             if (localProperties.hasOwnProperty(id) && localProperties[id].SellRent === SellRent) {
+    //               propertiesArray.push(localProperties[id]);
+    //                 }
+    //         }
+    //             else{
+    //               propertiesArray.push(localProperties[id]);
+    //             }
+    //       }
+    //     }
+
+    //     for (const id in data) {
+    //           if (SellRent) {
+    //                 if (data.hasOwnProperty(id) && (data as any)[id].SellRent === SellRent){
+    //                     propertiesArray.push((data as any)[id]);} // changed from data to (data as any)
+    //           }
+    //           else {
+    //                   propertiesArray.push((data as any)[id]);
+    //           }
+    //       }
+
+    //     return propertiesArray;
+    //   })
+    // );
+    // return this.http.get<Property[]>('data/properties.json');

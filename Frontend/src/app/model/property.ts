@@ -5,27 +5,27 @@ export class Property implements IPropertyBase{
     // This Propertty tyep gets directly attributed to the Property Card (IpropertyBase)
 
   id!: number;
-  SellRent!: number;
-  Name!: string;
-  PType!: string;
-  BHK!: number;
-  FType!: string;
-  Price!: number;
-  BuiltArea!: number;
+  sellRent!: number;
+  name!: string;
+  propertyType!: string;
+  bhk!: number;
+  furnishingType!: string;
+  price!: number;
+  builtArea!: number;
   CarpetArea?: number;
   Address!: string;
   Address2?: string;
-  City!: string;
+  city!: string;
   FloorNo?: string;
   TotalFloor?: string;
-  RTM!: boolean;
+  readyToMove!: boolean;
   AOP?: string;
   MainEntrance?: string;
   Security?: number;
   Gated?: number;
   Maintenance?: number;
   Possession?: string;
-  Image?: string;
+  image?: string;
   Description?: string;
   PostedOn!: string;
   PostedBy!: number;
