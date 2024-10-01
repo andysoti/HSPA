@@ -98,18 +98,9 @@ onReset() {
         {
           this.onReset()
             this.alertify.success('Congrats, you are successfully registered');
-        },error => {
-            console.log(error);
-            this.alertify.error(error.error);
         });
+    }
 
-      // this.registrationForm.reset()
-      // this.userSubmitted = false;
-      // this.alertify.success("Congrats, you are registered!")
-    }
-    else{
-      this.alertify.error('Kindly fill necessary fields')
-    }
   }
 
 

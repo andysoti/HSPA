@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
 import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
@@ -27,6 +27,7 @@ import { PropertyDetailResolverService } from './property/property-detail/proper
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 import { FilterPipe } from './Pipes/filter.pipe';
 import { SortPipe } from './Pipes/sort.pipe';
+import { HttpErrorInterceptorService } from './services/httperror-interceptor.service';
 
 
 
@@ -70,7 +71,13 @@ const appRoutes: Routes = [
     HttpClientModule, NgxGalleryModule
     // HttpClientModule
   ],
-  providers: [provideHttpClient(),
+  providers: [
+                {
+                  provide: HTTP_INTERCEPTORS,
+                  useClass: HttpErrorInterceptorService,
+                  multi: true
+              },
+              provideHttpClient(),
               HousingService,
               AlertifyService,
               AuthService,

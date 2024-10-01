@@ -35,7 +35,7 @@ export class UserLoginComponent implements OnInit {
         },
         (error) => {
             console.log(error);
-            this.alertify.error(error.error);
+            // this.alertify.error(error.error);
         }
     );
 
