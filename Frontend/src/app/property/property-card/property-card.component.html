@@ -21,7 +21,10 @@
     <span *ngIf="property.name">,</span>
     {{property.city}}
     <h6  class="mt-2">{{property.furnishingType}}
-    <span *ngIf="property.furnishingType !== 'Unfurnished'">Furnished</span> | <span *ngIf="property.readyToMove">Ready to Move</span></h6>
+      <span *ngIf="property.furnishingType !== 'Unfurnished'">Furnished</span>
+      <span *ngIf="property.readyToMove"> | Ready to Move</span>
+      <span *ngIf="!property.readyToMove"> | Posession: {{property.estPossessionOn | date}}</span>
+    </h6>
     <hr class="mt-0 mb-2">
     <h6 class="mb-0">Price: <span class="font-highlight">{{property.price}} USD.</span> |
       Area:  <span class="font-highlight" >{{property.builtArea}} Sq Ft </span> </h6>
